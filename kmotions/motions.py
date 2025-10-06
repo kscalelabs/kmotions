@@ -28,20 +28,6 @@ POSITIONS = [
 ]
 
 
-ACTION_SPACE_JOINT_LIMITS: dict[str, tuple[float, float]] = {
-    "rshoulderpitch": (-3.490658, 1.047198),
-    "rshoulderroll": (-1.658063 - math.radians(10.0), 0.436332 + math.radians(10.0)),
-    "rshoulderyaw": (-1.671886, 1.671886),
-    "relbowpitch": (0.0 - math.radians(90.0), 2.478368 + math.radians(90.0)),
-    "rwristroll": (-1.37881, 1.37881),
-    "lshoulderpitch": (-1.047198, 3.490658),
-    "lshoulderroll": (-0.436332 - math.radians(10.0), 1.658063 + math.radians(10.0)),
-    "lshoulderyaw": (-1.671886, 1.671886),
-    "lelbowpitch": (-2.478368 - math.radians(90.0), 0.0 + math.radians(90.0)),
-    "lwristroll": (-1.37881, 1.37881),
-}
-
-
 @attrs.define
 class Keyframe:
     """A keyframe in a motion sequence."""
@@ -109,13 +95,6 @@ class Motion:
             **{cmd: commands.get(cmd, 0.0) for cmd in COMMANDS},
             **{joint: positions.get(joint, 0.0) for joint in POSITIONS},
         }
-
-        # clamp the values to the action space joint limits
-        for joint, value in all_values.items():
-            if joint in ACTION_SPACE_JOINT_LIMITS:
-                all_values[joint] = max(
-                    ACTION_SPACE_JOINT_LIMITS[joint][0], min(ACTION_SPACE_JOINT_LIMITS[joint][1], value)
-                )
 
         self.current_time += self.dt
         return all_values
