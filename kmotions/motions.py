@@ -978,7 +978,7 @@ def create_cone_motion(dt: float = 0.01) -> Motion:
     duration = 5.0  # Total duration of one complete motion
     ramp_duration = 0.5  # Time to ramp up/down
 
-    keyframes = {}
+    keyframes: dict[float, dict[str, float]] = {}
     num_keyframes = 16  # Number of points around the circle
 
     # Add initial keyframes to rampt to starting position
