@@ -1213,13 +1213,27 @@ def create_cone_motion(dt: float = 0.01) -> Motion:
     """Creates a conical motion by rotating base roll and pitch in a circular pattern."""
     # Parameters for the cone motion
     cone_angle = math.radians(15.0)  # Angle of the cone from vertical
-    duration = 4.0  # Total duration of one complete motion
+    duration = 5.0  # Total duration of one complete motion
+    ramp_duration = 0.5  # Time to ramp up/down
 
     keyframes = []
     num_keyframes = 16  # Number of points around the circle
 
+    # Add initial keyframes to rampt to starting position
+    keyframes.append(Keyframe(time=0.0))
+    keyframes.append(
+        Keyframe(
+            time=ramp_duration,
+            positions={
+                "base_roll": 0.0,
+                "base_pitch": cone_angle,
+            },
+        )
+    )
+
+    # Do the circular motion
     for i in range(num_keyframes + 1):  # +1 to close the circle
-        t = (i / num_keyframes) * duration
+        t = ramp_duration + (i / num_keyframes) * (duration - 2 * ramp_duration)
         angle = (i / num_keyframes) * 2 * math.pi
 
         # Calculate roll and pitch to create circular motion
@@ -1235,6 +1249,9 @@ def create_cone_motion(dt: float = 0.01) -> Motion:
                 },
             )
         )
+
+    # Ramp down to 0,0
+    keyframes.append(Keyframe(time=duration))
 
     return Motion(keyframes, dt=dt)
 
