@@ -5,12 +5,13 @@ from typing import Dict, List
 
 import attrs
 
-# Define the joint names and their default positions for KBOT
+# commands are not interpolated between keyframes
 COMMANDS = [
     "xvel",
     "yvel",
     "yawrate",
 ]
+# positions are interpolated between keyframes for smoother motions
 POSITIONS = [
     "base_height",
     "base_roll",
@@ -112,10 +113,10 @@ def create_test_motion(joint_name: str, dt: float = 0.01) -> Motion:
         dt: Time step between frames
     """
     keyframes = [
-        Keyframe(time=0.0, positions={joint_name: math.radians(0.0)}, commands={}),
+        Keyframe(time=0.0),
         Keyframe(time=1.0, positions={joint_name: math.radians(-90.0)}, commands={}),
         Keyframe(time=2.0, positions={joint_name: math.radians(90.0)}, commands={}),
-        Keyframe(time=3.0, positions={joint_name: math.radians(0.0)}, commands={}),
+        Keyframe(time=3.0),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -207,8 +208,9 @@ def create_salute(dt: float = 0.01) -> Motion:
 def create_pickup(dt: float = 0.01) -> Motion:
     """Creates a pickup motion sequence."""
     keyframes = [
+        Keyframe(time=0.0),
         Keyframe(
-            time=0.0,
+            time=0.3,
             positions={
                 "rshoulderpitch": 0.0,
                 "rshoulderroll": math.radians(10.0),
@@ -221,7 +223,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=0.5,
+            time=0.8,
             positions={
                 "rshoulderpitch": math.radians(-45.0),
                 "rshoulderroll": math.radians(20.0),
@@ -235,7 +237,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=1.0,
+            time=1.3,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(20.0),
@@ -250,7 +252,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=1.3,
+            time=1.6,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(20.0),
@@ -265,7 +267,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=1.8,
+            time=2.1,
             positions={
                 "rshoulderpitch": math.radians(-45.0),
                 "rshoulderroll": math.radians(20.0),
@@ -279,7 +281,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=2.3,
+            time=2.6,
             positions={
                 "rshoulderpitch": 0.0,
                 "rshoulderroll": math.radians(10.0),
@@ -291,6 +293,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
                 "lwristroll": 0.0,
             },
         ),
+        Keyframe(time=3.0),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -373,8 +376,9 @@ def create_wild_walk(dt: float = 0.01) -> Motion:
 def create_zombie_walk(dt: float = 0.01) -> Motion:
     """Creates a classic zombie shambling motion with stiff arms."""
     keyframes = [
+        Keyframe(time=0.0),
         Keyframe(
-            time=0.0,
+            time=0.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(20.0),
@@ -391,7 +395,7 @@ def create_zombie_walk(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=3.0,
+            time=3.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(20.0),
@@ -407,6 +411,7 @@ def create_zombie_walk(dt: float = 0.01) -> Motion:
                 "xvel": 0.2,
             },
         ),
+        Keyframe(time=4.0),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -414,8 +419,9 @@ def create_zombie_walk(dt: float = 0.01) -> Motion:
 def create_pirouette(dt: float = 0.01) -> Motion:
     """Creates a graceful spinning pirouette motion."""
     keyframes = [
+        Keyframe(time=0.0),
         Keyframe(
-            time=0.0,
+            time=0.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-90.0),
@@ -437,7 +443,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
         ),
         # Preparation - rise and begin
         Keyframe(
-            time=1.0,
+            time=1.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-120.0),
@@ -459,7 +465,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
         ),
         # First rotation
         Keyframe(
-            time=3.0,
+            time=3.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-120.0),
@@ -481,7 +487,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
         ),
         # Second rotation - slightly faster
         Keyframe(
-            time=5.0,
+            time=5.5,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-120.0),
@@ -503,7 +509,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
         ),
         # Start slowing down
         Keyframe(
-            time=6.5,
+            time=7.0,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-120.0),
@@ -525,7 +531,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
         ),
         # Final pose
         Keyframe(
-            time=7.5,
+            time=8.0,
             positions={
                 "rshoulderpitch": math.radians(-90.0),
                 "rshoulderroll": math.radians(-90.0),
@@ -545,6 +551,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
                 "yawrate": 0.0,
             },
         ),
+        Keyframe(time=8.5),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -552,9 +559,11 @@ def create_pirouette(dt: float = 0.01) -> Motion:
 def create_backflip(dt: float = 0.01) -> Motion:
     """Creates an attempted backflip motion using base height, pitch and counter-rotating arms."""
     keyframes = [
+        # Start neutral
+        Keyframe(time=0.0),
         # Start standing
         Keyframe(
-            time=0.0,
+            time=0.2,
             positions={
                 "rshoulderpitch": 0.0,  # Arms neutral
                 "lshoulderpitch": 0.0,
@@ -564,7 +573,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Mid squat, arms starting to rise
         Keyframe(
-            time=0.4,
+            time=0.6,
             positions={
                 "rshoulderpitch": math.radians(-45.0),  # Arms raising
                 "lshoulderpitch": math.radians(45.0),
@@ -574,7 +583,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Deep squat, arms forward
         Keyframe(
-            time=0.8,
+            time=1.0,
             positions={
                 "rshoulderpitch": math.radians(-90.0),  # Arms forward
                 "lshoulderpitch": math.radians(90.0),
@@ -583,7 +592,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
             },
         ),
         Keyframe(
-            time=1.2,
+            time=1.4,
             positions={
                 "rshoulderpitch": math.radians(-90.0),  # Arms forward
                 "lshoulderpitch": math.radians(90.0),
@@ -598,7 +607,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Arms swing back hard as jump starts
         Keyframe(
-            time=1.21,
+            time=1.41,
             positions={
                 "rshoulderpitch": math.radians(90.0),  # Arms back
                 "lshoulderpitch": math.radians(-90.0),
@@ -608,7 +617,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Peak of jump, arms coming forward to drive flip
         Keyframe(
-            time=1.4,
+            time=1.6,
             positions={
                 "rshoulderpitch": math.radians(135.0),  # Arms driving forward and down
                 "lshoulderpitch": math.radians(-135.0),
@@ -618,7 +627,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Complete rotation, arms up to spot landing
         Keyframe(
-            time=1.6,
+            time=1.8,
             positions={
                 "rshoulderpitch": math.radians(90.0),  # Arms up
                 "lshoulderpitch": math.radians(-90.0),
@@ -628,7 +637,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
         ),
         # Landing squat, arms forward for balance
         Keyframe(
-            time=1.8,
+            time=2.0,
             positions={
                 "rshoulderpitch": math.radians(-45.0),  # Arms forward for balance
                 "lshoulderpitch": math.radians(45.0),
@@ -636,6 +645,7 @@ def create_backflip(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(-360.0),
             },
         ),
+        Keyframe(time=2.5),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -981,6 +991,7 @@ def create_boxing_guard_hold(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
+        Keyframe(time=3.5),
     ]
     return Motion(keyframes, dt=dt)
 
@@ -1309,55 +1320,57 @@ def create_come_at_me(dt: float = 0.01) -> Motion:
 def create_squats(dt: float = 0.01) -> Motion:
     """Creates a motion sequence of two squats."""
     keyframes = [
+        Keyframe(time=0.0),
         Keyframe(
-            time=0.0,
+            time=0.3,
             positions={
                 "base_height": 0.0,
             },
         ),
         Keyframe(
-            time=1.0,
+            time=1.3,
             positions={
                 "base_height": -0.25,
             },
         ),
         Keyframe(
-            time=1.5,
+            time=1.8,
             positions={
                 "base_height": -0.25,
             },
         ),
         Keyframe(
-            time=2.5,
+            time=2.8,
             positions={
                 "base_height": 0.0,
             },
         ),
         Keyframe(
-            time=3.0,
+            time=3.3,
             positions={
                 "base_height": 0.0,
             },
         ),
         Keyframe(
-            time=4.0,
+            time=4.3,
             positions={
                 "base_height": -0.25,
             },
         ),
         Keyframe(
-            time=4.5,
+            time=4.8,
             positions={
                 "base_height": -0.25,
             },
         ),
         Keyframe(
-            time=5.5,
+            time=5.8,
             positions={
                 "base_height": 0.0,
                 "base_pitch": 0.0,
             },
         ),
+        Keyframe(time=6.2),
     ]
     return Motion(keyframes, dt=dt)
 
