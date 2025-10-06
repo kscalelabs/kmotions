@@ -1007,9 +1007,9 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
-        # Hold guard
+        # Hold guard briefly
         Keyframe(
-            time=1.8,
+            time=0.5,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1026,7 +1026,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
         ),
         # Left punch land
         Keyframe(
-            time=1.81,
+            time=0.51,
             positions={
                 # Right arm stays in guard
                 "rshoulderpitch": math.radians(-55.0),
@@ -1043,7 +1043,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
         ),
         # Left punch hold
         Keyframe(
-            time=2.0,
+            time=0.7,
             positions={
                 # Right arm stays in guard
                 "rshoulderpitch": math.radians(-55.0),
@@ -1060,7 +1060,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
         ),
         # Return to guard
         Keyframe(
-            time=2.2,
+            time=0.9,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1075,9 +1075,9 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
-        # Hold guard
+        # Hold guard long
         Keyframe(
-            time=2.5,
+            time=3.0,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1092,6 +1092,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
+        Keyframe(time=3.2)
     ]
     return Motion(keyframes, dt=dt)
 
@@ -1118,9 +1119,9 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
-        # Hold guard
+        # Hold guard briefly
         Keyframe(
-            time=2.5,
+            time=0.5,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1137,7 +1138,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
         ),
         # Right punch land
         Keyframe(
-            time=2.51,
+            time=0.51,
             positions={
                 # Right arm extends
                 "rshoulderpitch": math.radians(-100.0),
@@ -1154,7 +1155,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
         ),
         # Right punch hold
         Keyframe(
-            time=2.7,
+            time=0.7,
             positions={
                 # Right arm extended
                 "rshoulderpitch": math.radians(-100.0),
@@ -1171,7 +1172,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
         ),
         # Return to guard
         Keyframe(
-            time=2.9,
+            time=0.9,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1186,9 +1187,9 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
-        # Hold guard
+        # Hold guard long
         Keyframe(
-            time=3.2,
+            time=3.0,
             positions={
                 # Right arm
                 "rshoulderpitch": math.radians(-55.0),
@@ -1203,6 +1204,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
                 "base_pitch": math.radians(10.0),
             },
         ),
+        Keyframe(time=3.2)
     ]
     return Motion(keyframes, dt=dt)
 
