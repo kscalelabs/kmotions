@@ -1,7 +1,7 @@
 """Defines motion sequences for robot arm movements."""
 
 import math
-from typing import Dict
+from typing import Callable, Dict
 
 # commands are not interpolated between keyframes
 COMMANDS = [
@@ -1078,7 +1078,8 @@ def create_squats(dt: float = 0.01) -> Motion:
     return Motion(keyframes, dt=dt)
 
 
-MOTIONS = {
+MotionFactory = Callable[[float], Motion]
+MOTIONS: Dict[str, MotionFactory] = {
     "wave": create_wave,
     "salute": create_salute,
     "pickup": create_pickup,
