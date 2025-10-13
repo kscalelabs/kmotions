@@ -11,9 +11,9 @@ COMMANDS = [
 ]
 # positions are interpolated between keyframes for smoother motions
 POSITIONS = [
-    "base_height",
-    "base_roll",
-    "base_pitch",
+    "baseheight",
+    "baseroll",
+    "basepitch",
     "rshoulderpitch",
     "rshoulderroll",
     "rshoulderyaw",
@@ -188,7 +188,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lelbowpitch": math.radians(10.0),
             "lwristroll": 0.0,
-            "base_pitch": math.radians(15.0),
+            "basepitch": math.radians(15.0),
         },
         1.3: {
             "rshoulderpitch": math.radians(-90.0),
@@ -199,8 +199,8 @@ def create_pickup(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lelbowpitch": math.radians(45.0),
             "lwristroll": math.radians(-20.0),
-            "base_height": -0.2,
-            "base_pitch": math.radians(30.0),
+            "baseheight": -0.2,
+            "basepitch": math.radians(30.0),
         },
         1.6: {
             "rshoulderpitch": math.radians(-90.0),
@@ -211,8 +211,8 @@ def create_pickup(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lelbowpitch": math.radians(90.0),
             "lwristroll": math.radians(-30.0),
-            "base_height": -0.2,
-            "base_pitch": math.radians(30.0),
+            "baseheight": -0.2,
+            "basepitch": math.radians(30.0),
         },
         2.1: {
             "rshoulderpitch": math.radians(-45.0),
@@ -223,7 +223,7 @@ def create_pickup(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lelbowpitch": math.radians(90.0),
             "lwristroll": math.radians(-30.0),
-            "base_pitch": math.radians(15.0),
+            "basepitch": math.radians(15.0),
         },
         2.6: {
             "rshoulderpitch": 0.0,
@@ -310,7 +310,7 @@ def create_zombie_walk(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lshoulderyaw": math.radians(-90.0),
             "lelbowpitch": math.radians(90.0),
-            "base_pitch": math.radians(15.0),
+            "basepitch": math.radians(15.0),
             "xvel": 0.2,
         },
         3.5: {
@@ -322,7 +322,7 @@ def create_zombie_walk(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-20.0),
             "lshoulderyaw": math.radians(-90.0),
             "lelbowpitch": math.radians(90.0),
-            "base_pitch": math.radians(15.0),
+            "basepitch": math.radians(15.0),
             "xvel": 0.2,
         },
         4.0: {},
@@ -345,7 +345,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": 0.0,
             "lelbowpitch": math.radians(-30.0),
             "lwristroll": math.radians(20.0),
-            "base_height": 0.0,
+            "baseheight": 0.0,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 0.0,
@@ -362,7 +362,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": math.radians(-45.0),
             "lelbowpitch": math.radians(-45.0),
             "lwristroll": math.radians(30.0),
-            "base_height": 0.15,
+            "baseheight": 0.15,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 0.5,
@@ -379,7 +379,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": math.radians(-45.0),
             "lelbowpitch": math.radians(-45.0),
             "lwristroll": math.radians(30.0),
-            "base_height": 0.15,
+            "baseheight": 0.15,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 1.0,
@@ -396,7 +396,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": math.radians(-45.0),
             "lelbowpitch": math.radians(-45.0),
             "lwristroll": math.radians(30.0),
-            "base_height": 0.15,
+            "baseheight": 0.15,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 1.2,
@@ -413,7 +413,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": math.radians(-45.0),
             "lelbowpitch": math.radians(-45.0),
             "lwristroll": math.radians(30.0),
-            "base_height": 0.15,
+            "baseheight": 0.15,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 0.5,
@@ -430,7 +430,7 @@ def create_pirouette(dt: float = 0.01) -> Motion:
             "lshoulderyaw": 0.0,
             "lelbowpitch": math.radians(-30.0),
             "lwristroll": math.radians(20.0),
-            "base_height": 0.0,
+            "baseheight": 0.0,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 0.0,
@@ -449,28 +449,28 @@ def create_backflip(dt: float = 0.01) -> Motion:
         0.2: {
             "rshoulderpitch": 0.0,  # Arms neutral
             "lshoulderpitch": 0.0,
-            "base_height": 0.0,
-            "base_pitch": 0.0,
+            "baseheight": 0.0,
+            "basepitch": 0.0,
         },
         # Mid squat, arms starting to rise
         0.6: {
             "rshoulderpitch": math.radians(-45.0),  # Arms raising
             "lshoulderpitch": math.radians(45.0),
-            "base_height": -0.15,
-            "base_pitch": 0.0,
+            "baseheight": -0.15,
+            "basepitch": 0.0,
         },
         # Deep squat, arms forward
         1.0: {
             "rshoulderpitch": math.radians(-90.0),  # Arms forward
             "lshoulderpitch": math.radians(90.0),
-            "base_height": -0.3,
-            "base_pitch": 0.0,
+            "baseheight": -0.3,
+            "basepitch": 0.0,
         },
         1.4: {
             "rshoulderpitch": math.radians(-90.0),  # Arms forward
             "lshoulderpitch": math.radians(90.0),
-            "base_height": -0.3,
-            "base_pitch": 0.0,
+            "baseheight": -0.3,
+            "basepitch": 0.0,
             "xvel": 0.0,
             "yvel": 0.0,
             "yawrate": 0.0,
@@ -479,29 +479,29 @@ def create_backflip(dt: float = 0.01) -> Motion:
         1.41: {
             "rshoulderpitch": math.radians(90.0),  # Arms back
             "lshoulderpitch": math.radians(-90.0),
-            "base_height": 0.4,
-            "base_pitch": math.radians(-50.0),
+            "baseheight": 0.4,
+            "basepitch": math.radians(-50.0),
         },
         # Peak of jump, arms coming forward to drive flip
         1.6: {
             "rshoulderpitch": math.radians(135.0),  # Arms driving forward and down
             "lshoulderpitch": math.radians(-135.0),
-            "base_height": 0.4,
-            "base_pitch": math.radians(-180.0),
+            "baseheight": 0.4,
+            "basepitch": math.radians(-180.0),
         },
         # Complete rotation, arms up to spot landing
         1.8: {
             "rshoulderpitch": math.radians(90.0),  # Arms up
             "lshoulderpitch": math.radians(-90.0),
-            "base_height": 0.2,
-            "base_pitch": math.radians(-340.0),
+            "baseheight": 0.2,
+            "basepitch": math.radians(-340.0),
         },
         # Landing squat, arms forward for balance
         2.0: {
             "rshoulderpitch": math.radians(-45.0),  # Arms forward for balance
             "lshoulderpitch": math.radians(45.0),
-            "base_height": -0.3,
-            "base_pitch": math.radians(-360.0),
+            "baseheight": -0.3,
+            "basepitch": math.radians(-360.0),
         },
         2.5: {},
     }
@@ -525,7 +525,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),  # Slightly inward
             "lshoulderyaw": math.radians(-30.0),  # Rotate in
             "lelbowpitch": math.radians(-30.0),  # Bent up
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
             "xvel": 0.2,
         },
         # Hold guard
@@ -540,7 +540,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Left punch land
         1.81: {
@@ -554,7 +554,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),  # Keep tight to body
             "lshoulderyaw": math.radians(-30.0),  # Natural rotation
             "lelbowpitch": math.radians(85.0),  # straight
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Left punch hold
         2.0: {
@@ -568,7 +568,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),  # Keep tight to body
             "lshoulderyaw": math.radians(-30.0),  # Natural rotation
             "lelbowpitch": math.radians(85.0),  # straight
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Return to guard
         2.2: {
@@ -582,7 +582,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard briefly
         2.5: {
@@ -596,7 +596,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Right punch land
         2.51: {
@@ -610,7 +610,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Right punch hold
         2.7: {
@@ -624,7 +624,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Return to guard and start sideways movement
         2.9: {
@@ -638,7 +638,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
             "yvel": 0.3,  # Start moving sideways
             "yawrate": -0.8,  # Start rotating
         },
@@ -653,7 +653,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Right punch land
         4.61: {
@@ -667,7 +667,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # hold right punch
         4.8: {
@@ -681,7 +681,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # back to guard
         5.0: {
@@ -695,7 +695,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # left punch land
         5.01: {
@@ -709,7 +709,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(85.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # left punch hold
         5.2: {
@@ -723,7 +723,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(85.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Final return to guard
         5.4: {
@@ -737,7 +737,7 @@ def create_boxing(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # empty keyframe interpolate back to start
         5.6: {},
@@ -762,7 +762,7 @@ def create_boxing_guard_hold(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),  # Slightly inward
             "lshoulderyaw": math.radians(-30.0),  # Rotate in
             "lelbowpitch": math.radians(-30.0),  # Bent up
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard for a few seconds
         3.0: {
@@ -776,7 +776,7 @@ def create_boxing_guard_hold(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         3.5: {},
     }
@@ -800,7 +800,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard briefly
         0.5: {
@@ -814,7 +814,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Left punch land
         0.51: {
@@ -828,7 +828,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(85.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Left punch hold
         0.7: {
@@ -842,7 +842,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(85.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Return to guard
         0.9: {
@@ -856,7 +856,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard long
         3.0: {
@@ -870,7 +870,7 @@ def create_boxing_left_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         3.2: {},
     }
@@ -894,7 +894,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard briefly
         0.5: {
@@ -908,7 +908,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Right punch land
         0.51: {
@@ -922,7 +922,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Right punch hold
         0.7: {
@@ -936,7 +936,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Return to guard
         0.9: {
@@ -950,7 +950,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         # Hold guard long
         3.0: {
@@ -964,7 +964,7 @@ def create_boxing_right_punch(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(-15.0),
             "lshoulderyaw": math.radians(-30.0),
             "lelbowpitch": math.radians(-30.0),
-            "base_pitch": math.radians(10.0),
+            "basepitch": math.radians(10.0),
         },
         3.2: {},
     }
@@ -984,8 +984,8 @@ def create_cone_motion(dt: float = 0.01) -> Motion:
     # Add initial keyframes to rampt to starting position
     keyframes[0.0] = {}
     keyframes[ramp_duration] = {
-        "base_roll": 0.0,
-        "base_pitch": cone_angle,
+        "baseroll": 0.0,
+        "basepitch": cone_angle,
     }
 
     # Do the circular motion
@@ -998,8 +998,8 @@ def create_cone_motion(dt: float = 0.01) -> Motion:
         pitch = cone_angle * math.cos(angle)
 
         keyframes[t] = {
-            "base_roll": roll,
-            "base_pitch": pitch,
+            "baseroll": roll,
+            "basepitch": pitch,
         }
 
     # Ramp down to 0,0
@@ -1026,8 +1026,8 @@ def create_come_at_me(dt: float = 0.01) -> Motion:
             "lshoulderyaw": 0.0,
             "lelbowpitch": math.radians(-10.0),
             # Neutral base
-            "base_pitch": 0.0,
-            "base_height": 0.0,
+            "basepitch": 0.0,
+            "baseheight": 0.0,
         },
         # Hold the pose
         3.0: {
@@ -1039,8 +1039,8 @@ def create_come_at_me(dt: float = 0.01) -> Motion:
             "lshoulderroll": math.radians(100.0),
             "lshoulderyaw": 0.0,
             "lelbowpitch": math.radians(-10.0),
-            "base_pitch": 0.0,
-            "base_height": 0.0,
+            "basepitch": 0.0,
+            "baseheight": 0.0,
         },
         # Empty keyframe to interpolate back to start
         3.2: {},
@@ -1053,25 +1053,25 @@ def create_squats(dt: float = 0.01) -> Motion:
     keyframes = {
         0.0: {},
         0.3: {
-            "base_height": 0.0,
+            "baseheight": 0.0,
         },
         1.3: {
-            "base_height": -0.25,
+            "baseheight": -0.25,
         },
         1.8: {
-            "base_height": -0.25,
+            "baseheight": -0.25,
         },
         2.8: {
-            "base_height": 0.0,
+            "baseheight": 0.0,
         },
         3.3: {
-            "base_height": 0.0,
+            "baseheight": 0.0,
         },
         4.3: {
-            "base_height": -0.25,
+            "baseheight": -0.25,
         },
         4.8: {
-            "base_height": -0.25,
+            "baseheight": -0.25,
         },
         5.8: {},
     }
