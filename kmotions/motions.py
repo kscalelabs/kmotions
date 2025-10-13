@@ -1078,6 +1078,34 @@ def create_squats(dt: float = 0.01) -> Motion:
     return Motion(keyframes, dt=dt)
 
 
+def create_walking_and_standing_unittest(dt: float = 0.01) -> Motion:
+    """Walking and standing test sequence with salute at the end."""
+    keyframes = {
+        0.0: {},
+        1.0: {"yawrate": -0.3},
+        4.0: {},
+        9.0: {"yawrate": 0.3},
+        12.0: {},
+        17.0: {"yvel": 0.3},
+        20.0: {},
+        22.0: {"yvel": -0.3},
+        25.0: {},
+        27.0: {"xvel": 0.3},
+        30.0: {},
+        37.0: {"xvel": -0.3},
+        42.0: {},
+        49.0: {},
+    }
+
+    # Get the salute motion and integrate its keyframes at the end
+    salute_start_time = max(keyframes.keys())
+    salute = create_salute(dt)
+    for time, frame in salute.keyframes.items():
+        keyframes[salute_start_time + time] = frame.copy()
+
+    return Motion(keyframes, dt=dt)
+
+
 MotionFactory = Callable[[float], Motion]
 MOTIONS: Dict[str, MotionFactory] = {
     "wave": create_wave,
