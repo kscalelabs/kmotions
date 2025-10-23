@@ -1082,18 +1082,18 @@ def create_walking_and_standing_unittest(dt: float = 0.01) -> Motion:
     """Walking and standing test sequence with salute at the end."""
     keyframes = {
         0.0: {},
-        1.0: {"yawrate": -0.3},
+        1.0: {"yawrate": -0.5},
         4.0: {},
-        9.0: {"yawrate": 0.3},
+        9.0: {"yawrate": 0.5},
         12.0: {},
-        17.0: {"yvel": 0.3},
+        17.0: {"yvel": 0.2},
         20.0: {},
-        22.0: {"yvel": -0.3},
-        25.0: {},
-        27.0: {"xvel": 0.3},
-        30.0: {},
-        37.0: {"xvel": -0.3},
-        42.0: {},
+        25.0: {"yvel": -0.2},
+        28.0: {},
+        33.0: {"xvel": 0.2},
+        36.0: {},
+        41.0: {"xvel": -0.2},
+        44.0: {},
         49.0: {},
     }
 
@@ -1122,6 +1122,7 @@ MOTIONS: Dict[str, MotionFactory] = {
     "boxing_right_punch": create_boxing_right_punch,
     "come_at_me": create_come_at_me,
     "cone": create_cone_motion,
+    "walking_and_standing_unittest": create_walking_and_standing_unittest,
     # Test motions - automatically generate test functions for each joint
     **{
         f"test_{''.join(word[0].lower() for word in joint_name.split('_')[1:-1])}": lambda dt=0.01,
