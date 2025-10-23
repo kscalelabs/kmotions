@@ -1125,7 +1125,7 @@ MOTIONS: Dict[str, MotionFactory] = {
     "walking_and_standing_unittest": create_walking_and_standing_unittest,
     # Test motions - automatically generate test functions for each joint
     **{
-        f"test_{''.join(word[0].lower() for word in joint_name.split('_')[1:-1])}": lambda dt=0.01,
+        f"test_{''.join(word[0].lower() for word in joint_name.split('_')[1:-1])}": lambda dt=0.01,  # type: ignore[misc]
         joint=joint_name: create_test_motion(joint, dt)
         for joint_name in POSITIONS[3:]
     },
