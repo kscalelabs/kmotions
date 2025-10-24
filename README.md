@@ -1,6 +1,6 @@
 # kmotions
 
-Keyframe-based motion sequences for KBOT robot arms.
+Keyframe-based motion sequences for the Kscale Labs Kbot humanoid robot.
 
 ## Usage
 
